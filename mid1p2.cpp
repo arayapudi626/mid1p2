@@ -179,6 +179,7 @@ void joinsLine() { //60%
     int value = rand() % (MAX - MIN +1) + MIN;
     if (prob <=60){
         push_back(value);
+        cout << NAMES[value] << " joins the line \n";
     }
     }
 
@@ -206,15 +207,20 @@ void anyLeavesBfServed(){ //10%
 
     }
 
-//void VIPjoin(){ //10%
-     
-//}
+void VIPjoin(){ //10%
+     int prob = rand() % 100 + 1;
+     if (prob <= 10){
+        int value = rand() % (MAX - MIN + 1) + MIN;
+        push_front(value);
+        cout << NAMES[value] << " (VIP) joins the front of the line \n";
+     }
+}
 
 void printList(){
     Node * temp = head;
     cout << " ---- Resulting line ---- \n";
     while (temp){
-        cout << NAMES[temp->data] << " ";
+        cout << NAMES[temp->data] << "\n"; 
         temp = temp->next;
     }
 }
@@ -235,11 +241,14 @@ int main() {
 
     // for loop until 20 min and call probability functions 
     for (int min = 2; min <= TIME_PERIOD; min++){
+        cout << "Time step: " << min << "\n";
         storeLine.customerHelped();
         storeLine.joinsLine();
         storeLine.printList();
         storeLine.lastLeavesBfServed();
         storeLine.anyLeavesBfServed();
+        storeLine.VIPjoin();
+        storeLine.printList();
     }
 
 return 0;
