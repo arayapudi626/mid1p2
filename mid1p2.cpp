@@ -1,7 +1,14 @@
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <cstdlib>
 using namespace std;
 const int TIME_PERIOD = 20;
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
+const int MAX = 100;
+const int MIN = 1;
+vector<string> NAMES;
 class DoublyLinkedList {
 private:
 struct Node {
@@ -148,8 +155,18 @@ delete temp;
 }
 }
 
-void store_opens(int value, int prob); 
-void customerHelped(int value, int prob); //40%
+void store_opens(){
+    cout << "Store opens: \n";
+    for (int i = 0; i < 5, i++){
+        int value = rand() % (MAX - MIN +1) + MIN;
+        push_back(value);
+        cout << NAMES[value] << " joins the line. \n";
+    }
+}
+
+void customerHelped(){
+    
+}
 void joinsLine(int value, int prob); //60%
 void lastLeavesBfServed(int value, int prob); //20%
 void anyLeavesBfServed(int value, int prob); //10%
@@ -159,8 +176,14 @@ void VIPjoin(int value, int prob); //10%
 
 int main() {
     // load the names with getline into a vector
-
+    ifstream fin("names.txt");
+    string n;
+    while (fin && getline(fin, n)) {
+        NAMES.push_back(n);
+    }
+    DoublyLinkedList storeLine;
     // start with store Opens fn
+    storeLine.store_opens();
 
     // for loop until 20 min and call probability functions 
 
