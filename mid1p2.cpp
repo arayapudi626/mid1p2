@@ -1,3 +1,6 @@
+//COMSC 210 | Midterm 1 Part 2 | Anishs Rayapudi
+//IDE Used: VS 2022
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -178,7 +181,12 @@ void joinsLine() { //60%
     int prob = rand() % 100 + 1;
     int value = rand() % static_cast<int>(NAMES.size());
     if (prob <=60){
-        push_back(value);
+        Node * newNode = new Node(value);
+        if (head) {
+        tail->next = newNode;
+        newNode->prev = tail;
+        tail = newNode;
+        }
         cout << NAMES[value] << " joins the line \n";
     }
     }
@@ -204,17 +212,17 @@ void anyLeavesBfServed(){ //10%
             temp = temp->next;
         }
         int value = rand() % posCount + 1;
-        temp = head;
+        Node * current = head;
         //cout << "value: " << value << "\n";
         /*if (!head){
             cout << "null" << endl;
             return;
         }*/
         for (int i = 0; i < value; i++) {
-            temp = temp->next;
-            cout << NAMES[temp->data] << " left the line \n";
-            delete_pos(value);
+            current = current->next;
         }
+        cout << NAMES[current->data] << " left the line \n";
+            delete_pos(value);
         }
 
     }
@@ -256,7 +264,6 @@ int main() {
         cout << "Time step: " << min << "\n";
         storeLine.customerHelped();
         storeLine.joinsLine();
-        storeLine.printList();
         storeLine.lastLeavesBfServed();
         storeLine.anyLeavesBfServed();
         storeLine.VIPjoin();
