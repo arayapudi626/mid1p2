@@ -183,14 +183,33 @@ void joinsLine() { //60%
     }
 
 void lastLeavesBfServed(){ //20 %
-
+    int prob = rand() % 100 + 1;
+    if (prob <=20){
+        if (tail){
+            cout << NAMES[tail->data] << " (at the rear) left the line \n";
+            pop_back();
+        }
+    }
 } 
 void anyLeavesBfServed(){ //10%
+    int prob = rand() % 100 + 1;
+    if (prob <= 10){
+        //pick random position within list and delete_pos
+        Node * temp = head;
+        int value = rand() % (MAX - MIN +1) + MIN;
+        for (int i = 0; i < value; i++) {
+            temp = temp->next;
+            cout << NAMES[temp->data] << " left the line \n";
+            delete_pos(i+1);
+        }
+        }
 
-} 
-void VIPjoin(){ //10%
+    }
+
+//void VIPjoin(){ //10%
      
-}
+//}
+
 void printList(){
     Node * temp = head;
     cout << " ---- Resulting line ---- \n";
@@ -219,6 +238,8 @@ int main() {
         storeLine.customerHelped();
         storeLine.joinsLine();
         storeLine.printList();
+        storeLine.lastLeavesBfServed();
+        storeLine.anyLeavesBfServed();
     }
 
 return 0;
