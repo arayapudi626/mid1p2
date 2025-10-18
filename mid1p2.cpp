@@ -196,8 +196,13 @@ void anyLeavesBfServed(){ //10%
     int prob = rand() % 100 + 1;
     if (prob <= 10){
         //pick random position within list and delete_pos
-        Node * temp = head;
+        Node * temp = head; 
         int value = rand() % (MAX - MIN +1) + MIN;
+        cout << "value: " << value << "\n";
+        if (!head){
+            cout << "null" << endl;
+            return;
+        }
         for (int i = 0; i < value; i++) {
             temp = temp->next;
             cout << NAMES[temp->data] << " left the line \n";
