@@ -18,17 +18,6 @@ Node* head;
 Node* tail;
 public:
 DoublyLinkedList() { head = nullptr; tail = nullptr; }
-void store_opens(int value, int prob); 
-void customerHelped(int value, int prob); //40%
-void joinsLine(int value, int prob); //60%
-void lastLeavesBfServed(int value, int prob); //20%
-void anyLeavesBfServed(int value, int prob); //10%
-void VIPjoin(int value, int prob); //10%
-
-
-
-
-
 
 void insert_after(int value, int position) {
 if (position < 0) {
@@ -158,32 +147,22 @@ head = head->next;
 delete temp;
 }
 }
-void print() {
-Node* current = head;
-if (!current) {
-cout << "List is empty." << endl;
-return;
-}
-while (current) {
-cout << current->data << " ";
-current = current->next;
-}
-cout << endl;
-}
-void print_reverse() {
-Node* current = tail;
-if (!current) {
-cout << "List is empty." << endl;
-return;
-}
-while (current) {
-cout << current->data << " ";
-current = current->prev;
-}
-cout << endl;
-}
+
+void store_opens(int value, int prob); 
+void customerHelped(int value, int prob); //40%
+void joinsLine(int value, int prob); //60%
+void lastLeavesBfServed(int value, int prob); //20%
+void anyLeavesBfServed(int value, int prob); //10%
+void VIPjoin(int value, int prob); //10%
+
 };
+
 int main() {
-cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS; // dummy statement to avoid compiler warning
+    // load the names with getline into a vector
+
+    // start with store Opens fn
+
+    // for loop until 20 min and call probability functions 
+
 return 0;
 }
