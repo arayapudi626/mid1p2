@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+const int TIME_PERIOD = 20;
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
 class DoublyLinkedList {
 private:
