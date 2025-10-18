@@ -157,20 +157,49 @@ delete temp;
 
 void store_opens(){
     cout << "Store opens: \n";
-    for (int i = 0; i < 5, i++){
+    for (int i = 0; i < 5; i++) {
         int value = rand() % (MAX - MIN +1) + MIN;
         push_back(value);
         cout << NAMES[value] << " joins the line. \n";
     }
 }
 
-void customerHelped(){
-    
+void customerHelped(){ //40%
+    int prob = rand() % 100 + 1;
+    if (prob <=40){
+    if (head){
+        cout << NAMES[head->data] << " is served \n";
+        pop_front();
+    }
 }
-void joinsLine(int value, int prob); //60%
-void lastLeavesBfServed(int value, int prob); //20%
-void anyLeavesBfServed(int value, int prob); //10%
-void VIPjoin(int value, int prob); //10%
+}
+
+void joinsLine() { //60% 
+    int prob = rand() % 100 + 1;
+    int value = rand() % (MAX - MIN +1) + MIN;
+    if (prob <=60){
+        push_back(value);
+    }
+    }
+
+void lastLeavesBfServed(){ //20 %
+
+} 
+void anyLeavesBfServed(){ //10%
+
+} 
+void VIPjoin(){ //10%
+     
+}
+void printList(){
+    Node * temp = head;
+    cout << " ---- Resulting line ---- \n";
+    while (temp){
+        cout << NAMES[temp->data] << " ";
+        temp = temp->next;
+    }
+}
+
 
 };
 
@@ -186,6 +215,11 @@ int main() {
     storeLine.store_opens();
 
     // for loop until 20 min and call probability functions 
+    for (int min = 2; min <= TIME_PERIOD; min++){
+        storeLine.customerHelped();
+        storeLine.joinsLine();
+        storeLine.printList();
+    }
 
 return 0;
 }
