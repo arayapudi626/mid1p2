@@ -18,6 +18,18 @@ Node* head;
 Node* tail;
 public:
 DoublyLinkedList() { head = nullptr; tail = nullptr; }
+void store_opens(int value, int prob); 
+void customerHelped(int value, int prob); //40%
+void joinsLine(int value, int prob); //60%
+void lastLeavesBfServed(int value, int prob); //20%
+void anyLeavesBfServed(int value, int prob); //10%
+void VIPjoin(int value, int prob); //10%
+
+
+
+
+
+
 void insert_after(int value, int position) {
 if (position < 0) {
 cout << "Position must be >= 0." << endl;
