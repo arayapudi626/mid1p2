@@ -158,7 +158,7 @@ delete temp;
 void store_opens(){
     cout << "Store opens: \n";
     for (int i = 0; i < 5; i++) {
-        int value = rand() % (MAX - MIN +1) + MIN;
+        int value = rand() % static_cast<int>(NAMES.size());
         push_back(value);
         cout << NAMES[value] << " joins the line. \n";
     }
@@ -176,7 +176,7 @@ void customerHelped(){ //40%
 
 void joinsLine() { //60% 
     int prob = rand() % 100 + 1;
-    int value = rand() % (MAX - MIN +1) + MIN;
+    int value = rand() % static_cast<int>(NAMES.size());
     if (prob <=60){
         push_back(value);
         cout << NAMES[value] << " joins the line \n";
@@ -197,16 +197,23 @@ void anyLeavesBfServed(){ //10%
     if (prob <= 10){
         //pick random position within list and delete_pos
         Node * temp = head; 
-        int value = rand() % (MAX - MIN +1) + MIN;
-        cout << "value: " << value << "\n";
-        if (!head){
+        //need from within current list
+        int posCount = 0;
+        while (temp){
+            posCount++;
+            temp = temp->next;
+        }
+        int value = rand() % posCount + 1;
+        temp = head;
+        //cout << "value: " << value << "\n";
+        /*if (!head){
             cout << "null" << endl;
             return;
-        }
+        }*/
         for (int i = 0; i < value; i++) {
             temp = temp->next;
             cout << NAMES[temp->data] << " left the line \n";
-            delete_pos(i+1);
+            delete_pos(value);
         }
         }
 
@@ -215,7 +222,7 @@ void anyLeavesBfServed(){ //10%
 void VIPjoin(){ //10%
      int prob = rand() % 100 + 1;
      if (prob <= 10){
-        int value = rand() % (MAX - MIN + 1) + MIN;
+        int value = rand() % static_cast<int>(NAMES.size());
         push_front(value);
         cout << NAMES[value] << " (VIP) joins the front of the line \n";
      }
